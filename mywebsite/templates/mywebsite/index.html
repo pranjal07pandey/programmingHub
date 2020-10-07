@@ -1,0 +1,44 @@
+{%  extends 'mywebsite/base.html' %}
+
+{% block content %}
+
+        <div class="jumbotron jumbotron-fluid my-4 bg-transparent">
+            <div class="container">
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <div class="alert alert-success" role="alert">
+                        {{message}}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                      </div>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                <h1 class="display-4">Hello, world!</h1>
+                <p class="lead">Learn Python the easiest and most efficient way....</p>
+                <hr class="my-4">
+                <p>We believe in learning by doing. If you're one of those who think the same way, you're on the right track.</p>
+                <a class="btn btn-primary btn-lg" href="#" role="button">Get Started</a>
+          </div>
+        </div>
+
+        <div class="container" style="margin-bottom: 2%;">
+            body goes here
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia reprehenderit nisi sit magni incidunt nesciunt perferendis ipsum vitae animi illo provident, earum quos cumque eos voluptate distinctio et. Rem, aspernatur.
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia reprehenderit nisi sit magni incidunt nesciunt perferendis ipsum vitae animi illo provident, earum quos cumque eos voluptate distinctio et. Rem, aspernatur.
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia reprehenderit nisi sit magni incidunt nesciunt perferendis ipsum vitae animi illo provident, earum quos cumque eos voluptate distinctio et. Rem, aspernatur.
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia reprehenderit nisi sit magni incidunt nesciunt perferendis ipsum vitae animi illo provident, earum quos cumque eos voluptate distinctio et. Rem, aspernatur.
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia reprehenderit nisi sit magni incidunt nesciunt perferendis ipsum vitae animi illo provident, earum quos cumque eos voluptate distinctio et. Rem, aspernatur.
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia reprehenderit nisi sit magni incidunt nesciunt perferendis ipsum vitae animi illo provident, earum quos cumque eos voluptate distinctio et. Rem, aspernatur.
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia reprehenderit nisi sit magni incidunt nesciunt perferendis ipsum vitae animi illo provident, earum quos cumque eos voluptate distinctio et. Rem, aspernatur.
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia reprehenderit nisi sit magni incidunt nesciunt perferendis ipsum vitae animi illo provident, earum quos cumque eos voluptate distinctio et. Rem, aspernatur.
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia reprehenderit nisi sit magni incidunt nesciunt perferendis ipsum vitae animi illo provident, earum quos cumque eos voluptate distinctio et. Rem, aspernatur.
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia reprehenderit nisi sit magni incidunt nesciunt perferendis ipsum vitae animi illo provident, earum quos cumque eos voluptate distinctio et. Rem, aspernatur.
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia reprehenderit nisi sit magni incidunt nesciunt perferendis ipsum vitae animi illo provident, earum quos cumque eos voluptate distinctio et. Rem, aspernatur.
+        </div>
+
+
+{% endblock %}
+

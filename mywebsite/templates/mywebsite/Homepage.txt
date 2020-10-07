@@ -1,0 +1,12 @@
+Homepage
+
+-Section for Intro
+-Navbar
+    -Icon
+    -course
+    -login ->modal
+    -signup 
+    -blog(extra)
+
+-Current courses
+-Footer

@@ -1,0 +1,81 @@
+{% extends 'mywebsite/base.html' %}
+
+{% block content %}
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-4">
+
+                <div class="card shadow" style="width: 18rem;">
+                    <img src="..." class="card-img-top" alt="image here">
+                    <div class="card-body">
+                      <h3 class="card-title">{{course.title}}</h3>
+                      <p class="card-text">{{course.description}}</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-stopwatch" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" d="M6 .5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1H9v1.07A7.001 7.001 0 0 1 8 16 7 7 0 0 1 7 2.07V1h-.5A.5.5 0 0 1 6 .5zM8 3a6 6 0 1 0 .001 12A6 6 0 0 0 8 3zm0 2.1a.5.5 0 0 1 .5.5V9a.5.5 0 0 1-.5.5H4.5a.5.5 0 0 1 0-1h3V5.6a.5.5 0 0 1 .5-.5z"/>
+                        </svg>
+                        Course Duration: {{course.course_length}}
+                    </li>
+                      <li class="list-group-item"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-right-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                        <path fill-rule="evenodd" d="M5.795 12.456A.5.5 0 0 1 5.5 12V4a.5.5 0 0 1 .832-.374l4.5 4a.5.5 0 0 1 0 .748l-4.5 4a.5.5 0 0 1-.537.082z"/>
+                      </svg> {{lessons.count}} lessons</li>
+
+                      <li class="list-group-item"> <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-bookmark-check-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M4 0a2 2 0 0 0-2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4zm6.854 5.854a.5.5 0 0 0-.708-.708L7.5 7.793 6.354 6.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+                      </svg> Lifetime Support</li>
+                    </ul>
+                    <div class="card-body">
+                      <a href="#" class="btn btn-success">Buy Now</a>
+                      
+                    </div>
+                  </div>
+
+                 <h1></h1> 
+
+                
+            </div>
+
+
+            <div class="col-md-8">
+              {% for section in sections %}
+
+              <div class="accordion" id="accordionExample">
+                <div class="card shadow">
+                  <div class="card-header" id="headingOne">
+                    <h2 class="mb-0">
+                      <button class="btn btn-light btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse{{forloop.counter}}" aria-expanded="true" aria-controls="collapse{{forloop.counter}}">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-down-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                        </svg> {{section.title}}
+                      </button>
+                    </h2>
+                  </div>
+              
+                  <div id="collapse{{forloop.counter}}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="card-body">
+
+                      <div class="container">
+                        <ol>
+                        {% for lesson in lessons %}
+                              {%if lesson.section == section%}
+                                    <li  class="my-2"><a href="{% url 'lesson_details' course.id lesson.id %}" style="text-decoration: none;">{{lesson.title}}</a></li>
+                              {% endif %}
+                        {% endfor %}
+                      </ol>
+
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

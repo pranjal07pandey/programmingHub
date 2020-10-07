@@ -1,0 +1,89 @@
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent shadow">
+        <div class="container">
+
+        <a class="navbar-brand" href="{% url 'index' %}">Pranjal's-Tech</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'courses' %}">Courses</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'blogs' %}">Blog</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'pricing' %}">Pricing</a>
+            </li>
+          </ul>
+        {% if not user.is_authenticated %}
+          <ul class="navbar-nav">
+            <li class="nav-item active" style="margin-right: 5%;">
+              <a class="btn btn-outline-primary" data-toggle="modal" data-target="#loginModal" >Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-outline-secondary" href="#">Register</a>
+            </li>
+          </ul>
+          {% else %}
+          <ul class="navbar-nav">
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{user}}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{% url 'dashboard' user.id %}">Profile</a>
+              <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+              <div class="dropdown-divider"></div>
+            </div>
+          </li>
+          </ul>
+
+{% endif %}
+
+        </div>
+        
+
+    </div>
+</nav>
+
+<!-- Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        
+            <form method="POST" action="">
+                {% csrf_token %}
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Email address or Username</label>
+                  <input type="text" class="form-control"  name="username">
+                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Password</label>
+                  <input type="password" class="form-control"  name="password">
+                </div>
+                <div class="form-group">
+                    <a href="{%  url 'register' %}" target="">Not Registered yet? Click here</a>
+                </div>
+
+                    <input type="submit" value="Login" class="btn btn-primary">
+              </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+

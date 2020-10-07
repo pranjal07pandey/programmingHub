@@ -1,0 +1,23 @@
+{% extends 'mywebsite/base.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<div class="container my-4">
+    <div class="jumbotron">
+<h1>
+    Hi, {{user}}
+
+    <p>Subscribed status: {{user.profile.is_subscribed}}</p>
+
+    <p>Bio: {{user.profile.bio}}</p>
+
+</h1>
+
+
+    </div>
+</div>
+
+{% endif %}
+
+{% endblock %}
