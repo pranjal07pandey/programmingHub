@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import *
 from django.contrib import messages
-from .forms import UserCreationForm
+from .forms import UserCreationForm, CommentForm
 from django.contrib.auth import authenticate, login, logout
 
 
@@ -80,14 +80,26 @@ def lesson_details(request, pk, pk1):
     section = Section.objects.filter(course=course)
     lessons = Lesson.objects.filter(course=course)
 
+    comments = Comment.objects.filter(lesson=lesson).order_by('id')
+
+    if request.method == 'POST':
+        comment_form = CommentForm(request.POST)
+
+        if comment_form.is_valid():
+             content = request.POST.get('body')
+             comment = Comment.objects.create(lesson=lesson, user=request.user, body=content)
+             comment.save()
+    else:
+        comment_form = CommentForm()
+
     return render(request, 'mywebsite/lesson_detail.html',{
         'title': lesson.title,
         'lessons': lessons,
         'sections': section,
         'course': course,
         'current_lesson': lesson,
-
-
+        'comments': comments,
+        'comment_form': comment_form
     })
 
 def dashboard(request, pk):
@@ -126,3 +138,4 @@ def pricing(request):
     return render(request, 'mywebsite/pricing.html', {
         'title': 'Pricing'
     })
+

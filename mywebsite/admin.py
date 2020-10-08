@@ -7,6 +7,9 @@ admin.site.register(Course)
 admin.site.register(Lesson)
 admin.site.register(Section)
 admin.site.register(Profile)
+admin.site.register(Comment)
+
+
 
 
 

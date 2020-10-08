@@ -1,4 +1,5 @@
 {% extends 'mywebsite/base.html' %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 <div class="container my-4">
@@ -45,6 +46,43 @@
             <iframe width="720" height="420"
                 src='{{current_lesson.video_url}}'>
             </iframe> 
+
+            <div class="my-4">
+
+              <p>
+                <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                  Discussion
+                </a>
+            
+              </p>
+              <div class="collapse" id="collapseExample">
+                <div class="card card-body shadow-md">
+
+                  {% for comment in comments %}
+
+                  <blockquote class="blockquote">
+                    <p class="mb-0">{{ comment.body }}</p>
+                    <footer class="blockquote-footer">By: <a href="{% url 'dashboard' comment.user.id  %}"><cite title="Source Title">{{comment.user|capfirst}}</cite></a><br><small> On: {{comment.created_at}}</small></footer>
+                  </blockquote>
+                  <hr>
+
+                  {% endfor %}
+
+                </div>
+
+                <form action="" method="post">
+                  {% csrf_token %}
+                  {% if comment_form %}
+                    {{comment_form | crispy}}
+                  {% endif %}
+
+                    <input type="submit" value="comment" class="btn btn-success">
+
+                </form>
+              </div>
+
+            </div>
+            
             
         </div>
         {% else %}
